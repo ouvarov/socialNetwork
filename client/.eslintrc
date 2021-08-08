@@ -1,0 +1,71 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "clipchamp": true
+  },
+  "rules": {
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+    "indent": ["warn", 4, { "SwitchCase": 1}],
+    "import/first": 1,
+    "arrow-body-style": 1,
+    "no-plusplus": [1, { "allowForLoopAfterthoughts": true }],
+    "no-underscore-dangle":  [0, { "allow": ["_place"] }],
+    "react/jsx-no-bind": [ 0, { "ignoreDOMComponents": true } ],
+    "react/jsx-indent": [1,4],
+    "react/jsx-indent-props": [1,4],
+    "react/no-did-mount-set-state": 0,
+    "react/no-unused-state": 1,
+    "react/no-unused-prop-types": 0,
+    "react/jsx-curly-brace-presence": 1,
+    "consistent-return": 0,
+    "react/jsx-boolean-value": 1,
+    "react/prefer-stateless-function": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "no-unused-vars": 0,
+    "no-use-before-define": 0,
+    "camelcase": 0,
+    "no-shadow": 0,
+    "no-unreachable": 1,
+    "spaced-comment": 1,
+    "react/prop-types": [0, {
+      "ignore": ["enum"]
+    }],
+    "react/default-props-match-prop-types": 0,
+    "newline-after-var": ["warn", "always"],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": ["hrefLeft", "hrefRight", "to"],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "import/prefer-default-export": 0,
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "tabWidth": 4,
+      "printWidth": 120,
+      "trailingComma": "all"
+    }],
+    "jsx-a11y/media-has-caption": 0
+  },
+  "overrides": [
+    {
+      "files": ["*.test.js"]
+    }
+  ]
+}

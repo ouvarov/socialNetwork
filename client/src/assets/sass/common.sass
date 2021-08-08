@@ -1,0 +1,54 @@
+=media($width)
+    @media only screen and (max-width: $width+ px)
+        @content
+
+
+//fonts
+$montserrat: 'Montserrat', sans-serif
+$montserrat-bold: 'Montserrat-Bold', sans-serif
+$montserrat-semi-bold: 'Montserrat-Semi-Bold', sans-serif
+
+=font-stile($family, $size, $color)
+    color: $color
+    font-size: $size
+    font-family: $family
+
+=size($size)
+    height: $size
+    width: $size
+
+=hover($color)
+    &:hover
+        box-shadow: 0 2px 30px $color
+
+=placeholder-color($color)
+    &::-webkit-input-placeholder
+        color: $color
+    &::-moz-placeholder
+        color: $color
+        opacity: 1
+    &:-moz-placeholder
+        color: $color
+        opacity: 1
+    &:-ms-input-placeholder
+        color: $color
+
+=placeholder-font-family($font-family)
+    &::-webkit-input-placeholder
+        font-family: $font-family
+    &::-moz-placeholder
+        font-family: $font-family
+    &:-moz-placeholder
+        font-family: $font-family
+    &:-ms-input-placeholder
+        font-family: $font-family
+
+.App
+    height: 100vh
+    width: 100vw
+
+.app
+    min-width: 100vw
+    min-height: 100vh
+    display: grid
+
