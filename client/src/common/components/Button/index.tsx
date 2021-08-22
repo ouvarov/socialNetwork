@@ -6,6 +6,7 @@ type ButtonOptionalPropsType = {
     isDisabled?: boolean;
     children?: React.ReactNode;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    type?: 'button' | 'submit';
 };
 
 const Button: React.FunctionComponent<ButtonOptionalPropsType> = ({
@@ -13,9 +14,10 @@ const Button: React.FunctionComponent<ButtonOptionalPropsType> = ({
     className = '',
     children = null,
     isDisabled = false,
+    type = 'button',
 }) => (
     <button
-        type="button"
+        type={type}
         onClick={onClick}
         disabled={isDisabled}
         className={classNames(`button ${className}`, {
