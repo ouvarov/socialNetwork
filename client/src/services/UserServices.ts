@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
-import { UserSingleType } from 'types';
+import { UserTypes } from 'types';
 import api from 'api';
 
-const fetchUsers = (): Promise<AxiosResponse> => api.get<UserSingleType[]>('/users');
+const fetchUsers = (): Promise<AxiosResponse> => api.get<UserTypes[]>('/users');
 
 export default { fetchUsers };

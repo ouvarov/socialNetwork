@@ -70,7 +70,7 @@ async registration(request, response, next) {
 
 	async getUsers(request, response, next) {
 		try {
-			const users = await userService.getUser();
+			const users = await userService.getUsers();
 			return response.json(users)
 		} catch (e) {
 			next(e)

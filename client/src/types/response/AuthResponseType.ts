@@ -1,7 +1,10 @@
-import { UserSingleType } from 'types';
+import { UserTypes } from 'types';
 
 export type AuthResponseType = {
     accessToken: string;
     refreshToken: string;
-    user: UserSingleType;
+    data: {
+        user: UserTypes;
+        post: any;
+    };
 };

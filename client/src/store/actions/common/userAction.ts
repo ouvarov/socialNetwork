@@ -1,4 +1,5 @@
 import { ACTIVE_TYPE } from 'store/const';
-import { UserSingleType } from 'types';
+import { UserTypes } from 'types';
 
-export const setUser = (data: UserSingleType) => ({ type: ACTIVE_TYPE.SET_USER, data });
+export const setUser = (data: UserTypes) => ({ type: ACTIVE_TYPE.SET_USER, data });
+export const cleanUser = () => ({ type: ACTIVE_TYPE.CLEAN_USER });

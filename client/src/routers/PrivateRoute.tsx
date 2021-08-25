@@ -1,15 +1,22 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { routePaths } from 'routers';
+import { StateTypes } from 'store/types';
 
-type PrivateRoutePropsType = {
-    path: string;
+interface PrivateRoutePropsType extends RouteProps {
     component: React.ComponentType<any>;
-};
+}
 
 const PrivateRoute: React.FC<PrivateRoutePropsType> = ({ component: Component, ...restProps }) => {
-    if (localStorage.getItem('token')) {
-        return <Component {...restProps} />;
+    const isAuth = useSelector((state: StateTypes) => state.profile.isAuth);
+
+    if (isAuth) {
+        return (
+            <Route {...restProps}>
+                <Component />
+            </Route>
+        );
     }
     return <Redirect to={routePaths.loginPage()} />;
 };

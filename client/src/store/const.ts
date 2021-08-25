@@ -1,4 +1,9 @@
 export enum ACTIVE_TYPE {
     ADD_USERS = 'ADD-USERS',
     SET_USER = 'SET-USER',
+    CLEAN_USER = 'CLEAN_USER',
+}
+export enum PROFILE_TYPE {
+    SET_PROFILE = 'SET-PROFILE',
+    CLEAN_PROFILE = 'CLEAN-PROFILE',
 }

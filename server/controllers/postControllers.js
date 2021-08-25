@@ -20,10 +20,10 @@ class PostControllers {
 		try {
 			const userId = request.params.userId
 			const findAllPosts = await postModel.find({ownerId: userId});
-			const user = await UserModel.findOne({_id: userId});
-			const userDto = new UserDto(user);
+			const getUser = await UserModel.findOne({_id: userId});
+			const user = new UserDto(getUser);
 
-			return response.json({userDto, posts: [...findAllPosts]})
+			return response.json({user, posts: [...findAllPosts]})
 
 		} catch (e) {
 			next(e)

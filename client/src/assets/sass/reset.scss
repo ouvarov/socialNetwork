@@ -32,7 +32,9 @@ audio:not([controls]) {
     height: 0;
 }
 
-img, fieldset, a img {
+img,
+fieldset,
+a img {
     border: none;
 }
 
@@ -43,15 +45,21 @@ img {
 }
 
 a {
-    color: white;
+    color: #ff8f00;
     text-decoration: none;
+    transition: .3s;
+    &:hover {
+        text-decoration: underline;
+    }
 }
-a:active, a:hover {
+a:active,
+a:hover {
     outline: 0;
     text-decoration: none;
 }
 
-input[type="submit"], button {
+input[type='submit'],
+button {
     cursor: pointer;
 }
 

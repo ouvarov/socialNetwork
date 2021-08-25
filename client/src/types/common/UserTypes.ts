@@ -1,6 +1,6 @@
-export type UserSingleType = {
+export type UserTypes = {
+    id: string;
     email: string;
-    _id: string;
     isActivated: boolean;
     imageUrl: string;
     userName: string;

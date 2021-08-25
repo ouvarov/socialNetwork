@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Input, Form, Button } from 'common/components';
 import routePaths from 'routers/routePaths';
 import { loginUser } from 'auth/api/services/AuthServices';
-import { setUser } from 'store/actions';
-import historyManager from 'utils/historyManager';
+import { setProfile } from 'store/actions';
 
 const Login: React.FC = () => {
     const dispatch = useDispatch();
@@ -16,10 +15,9 @@ const Login: React.FC = () => {
     const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         loginUser(email, password).then(response => {
-            dispatch(setUser(response.data.user));
+            dispatch(setProfile(response.data));
             localStorage.setItem('token', response.data.accessToken);
         });
-        historyManager.history.push('/users');
     };
 
     return (

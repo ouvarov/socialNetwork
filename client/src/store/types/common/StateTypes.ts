@@ -1,6 +1,7 @@
-import { UsersListTypes, UserTypes } from 'store/types';
+import { ProfileTypes, UsersListTypes, UsersTypes } from 'store/types';
 
 export type StateTypes = {
     usersList: UsersListTypes;
-    user: UserTypes[];
+    user: UsersTypes;
+    profile: ProfileTypes;
 };

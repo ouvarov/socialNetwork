@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Form, Input } from 'common/components';
 import { registrationUser } from 'auth/api/services/AuthServices';
-import { setUser } from 'store/actions';
-import historyManager from 'utils/historyManager';
+import { setProfile } from 'store/actions';
 
 const SingUp: React.FC = () => {
     const dispatch = useDispatch();
@@ -15,10 +14,9 @@ const SingUp: React.FC = () => {
     const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         registrationUser(email, password, userName).then(response => {
-            dispatch(setUser(response.data.user));
+            dispatch(setProfile(response.data));
             localStorage.setItem('token', response.data.accessToken);
         });
-        historyManager.history.push('/users');
     };
 
     return (

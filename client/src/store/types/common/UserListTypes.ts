@@ -1,10 +1,10 @@
-import { UserSingleType } from 'types';
+import { UserTypes } from 'types';
 
 export type UsersListActions = {
     type: string;
-    data: UserSingleType[];
+    data: UserTypes[];
 };
 export type UsersListTypes = {
-    data: UserSingleType[];
+    data: UserTypes[];
     isLoading: boolean;
 };

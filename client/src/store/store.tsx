@@ -1,8 +1,9 @@
 import { combineReducers, createStore } from 'redux';
-import { userReducer, usersListReducer } from './reducers';
+import { userReducer, usersListReducer, profileReducer } from './reducers';
 
 const reducers = combineReducers({
     usersList: usersListReducer,
+    profile: profileReducer,
     user: userReducer,
 });
 
