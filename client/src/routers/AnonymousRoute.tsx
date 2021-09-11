@@ -9,11 +9,15 @@ interface AnonymousRoutePropsType extends RouteProps {
 }
 
 const AnonymousRoute: React.FC<AnonymousRoutePropsType> = ({ component: Component, ...restProps }) => {
-    const isAuth = useSelector((state: StateTypes) => state.profile.isAuth);
-    const id = useSelector((state: StateTypes) => state.profile.data?.user.id);
+    const isAuth = useSelector((state: StateTypes) => state.user.isAuth);
+    const id = useSelector((state: StateTypes) => state.user.data?.id);
 
     if (isAuth) {
-        return <Redirect to={routePaths.profilePage(id || '')} />;
+        return (
+            <Route {...restProps}>
+                <Redirect to={routePaths.profilePage(id || '')} />
+            </Route>
+        );
     }
     return (
         <Route {...restProps}>

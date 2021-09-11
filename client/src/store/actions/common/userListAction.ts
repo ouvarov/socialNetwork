@@ -1,4 +1,4 @@
 import { ACTIVE_TYPE } from 'store/const';
-import { UserTypes } from 'types';
+import { UserDataTypes } from 'store/types';
 
-export const setUsersList = (data: UserTypes) => ({ type: ACTIVE_TYPE.ADD_USERS, data });
+export const setUsersList = (data: UserDataTypes) => ({ type: ACTIVE_TYPE.ADD_USERS, data });

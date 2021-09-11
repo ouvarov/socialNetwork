@@ -19,6 +19,7 @@
     "clipchamp": true
   },
   "rules": {
+    "no-param-reassign": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],

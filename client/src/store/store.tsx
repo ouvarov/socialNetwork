@@ -1,5 +1,16 @@
-import { combineReducers, createStore } from 'redux';
-import { userReducer, usersListReducer, profileReducer } from './reducers';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+import rootSaga from 'store/sagas/rootSaga';
+import { userReducer, usersListReducer, profileReducer } from 'store/reducers';
+
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
+const sagaMiddleware = createSagaMiddleware();
 
 const reducers = combineReducers({
     usersList: usersListReducer,
@@ -7,6 +18,10 @@ const reducers = combineReducers({
     user: userReducer,
 });
 
-const store = createStore(reducers);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducers, composeEnhancers(applyMiddleware(sagaMiddleware)));
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

@@ -1,12 +1,14 @@
-import { ACTIVE_TYPE } from 'store/const';
-import { UserActions, UsersTypes } from 'store/types';
+import { AUTH_TYPES } from 'store/const';
+import { UserActionTypes, UserTypes } from 'store/types';
 
-const userReducer = (user: UsersTypes = { data: [], isLoading: true }, action: UserActions) => {
+const userReducer = (user: UserTypes = { data: null, isLoading: true, isAuth: false }, action: UserActionTypes) => {
     switch (action.type) {
-        case ACTIVE_TYPE.SET_USER:
-            return { ...user, data: action.data, isLoading: false };
-        case ACTIVE_TYPE.CLEAN_USER:
-            return { data: [], isLoading: true };
+        case AUTH_TYPES.SET_USER:
+            return { ...user, data: action.data, isLoading: false, isAuth: true };
+        case AUTH_TYPES.CLEAN_USER:
+            return { data: [], isLoading: true, isAuth: false };
+        case AUTH_TYPES.NEED_AUTH:
+            return { data: [], isLoading: false, isAuth: false };
         default:
             return user;
     }

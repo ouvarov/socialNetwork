@@ -21,13 +21,13 @@ const UsersListPage: React.FC = () => {
 
     return (
         <div>
-            {users.map(({ id, imageUrl, userName, created, subscribers, followers }) => (
+            {users.map(({ id, imageUrl, userName, created, following, followers }) => (
                 <div key={id}>
                     {id}
                     <figure style={{ background: imageUrl }} />
                     <Link to={routePaths.profilePage(id)}>{userName}</Link>
                     <p>{toDate(created)}</p>
-                    <p>{subscribers.length}</p>
+                    <p>{following.length}</p>
                     <p>{followers.length}</p>
                 </div>
             ))}

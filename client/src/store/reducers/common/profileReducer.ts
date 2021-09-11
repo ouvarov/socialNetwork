@@ -1,20 +1,16 @@
 import { PROFILE_TYPE } from 'store/const';
-import { ProfileActions, ProfileTypes } from 'store/types';
+import { ProfileActionTypes, ProfileTypes } from 'store/types';
 
-const profileReducer = (
-    profile: ProfileTypes = { data: null, isLoading: true, isAuth: false },
-    action: ProfileActions,
-) => {
+const profileReducer = (profile: ProfileTypes = { data: null, isLoading: true }, action: ProfileActionTypes) => {
     switch (action.type) {
         case PROFILE_TYPE.SET_PROFILE:
             return {
                 ...profile,
                 data: { user: action.data?.user, posts: action.data?.posts },
                 isLoading: false,
-                isAuth: true,
             };
         case PROFILE_TYPE.CLEAN_PROFILE:
-            return { data: null, isLoading: true, isAuth: false };
+            return { data: null };
         default:
             return profile;
     }

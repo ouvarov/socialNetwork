@@ -4,7 +4,7 @@ module.exports = class UserDto {
 	isActivated;
 	imageUrl;
 	userName;
-	subscribers;
+	following;
 	followers;
 	activationLink;
 	created;
@@ -15,7 +15,7 @@ module.exports = class UserDto {
 		this.userName = model.userName
 		this.isActivated = model.isActivated;
 		this.imageUrl = model.imageUrl;
-		this.subscribers = model.subscribers;
+		this.following = model.following;
 		this.followers = model.followers;
 		this.activationLink = model.activationLink;
 		this.created = model.created;

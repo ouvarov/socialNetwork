@@ -1,10 +1,10 @@
-import { UserTypes } from 'types';
+import { UserDataTypes } from 'store/types';
 
 export type UsersListActions = {
     type: string;
-    data: UserTypes[];
+    data: UserDataTypes[];
 };
 export type UsersListTypes = {
-    data: UserTypes[];
+    data: UserDataTypes[];
     isLoading: boolean;
 };

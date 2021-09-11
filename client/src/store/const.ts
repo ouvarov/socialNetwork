@@ -1,9 +1,17 @@
 export enum ACTIVE_TYPE {
     ADD_USERS = 'ADD-USERS',
-    SET_USER = 'SET-USER',
-    CLEAN_USER = 'CLEAN_USER',
 }
 export enum PROFILE_TYPE {
     SET_PROFILE = 'SET-PROFILE',
     CLEAN_PROFILE = 'CLEAN-PROFILE',
+    GET_PROFILE = 'GET-PROFILE',
+}
+
+export enum AUTH_TYPES {
+    LOGIN = 'LOGIN',
+    LOGOUT = 'LOGOUT',
+    CHECK_AUTH = 'CHECK-AUTH',
+    NEED_AUTH = 'NEED_AUTH',
+    SET_USER = 'SET-USER',
+    CLEAN_USER = 'CLEAN_USER',
 }

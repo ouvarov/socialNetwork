@@ -5,7 +5,7 @@ const UserSchema = new Schema({
 	password: { type: String, required: true},
 	userName: { type: String, required: true },
 	imageUrl: {type: String, default: null},
-	subscribers: {type: Array, default: []},
+	following: {type: Array, default: []},
 	followers: {type: Array, default: []},
 	description: {type: String, default: null},
 	isActivated: { type: Boolean, default: false},

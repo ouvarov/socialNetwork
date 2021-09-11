@@ -1,19 +1,11 @@
-import { UserTypes } from 'types';
+import { UserDataTypes } from 'store/types';
 
-export type UserActions = {
+export type UserActionTypes = {
     type: string;
-    data: UserTypes[];
+    data: UserDataTypes[];
 };
-export type ProfileActions = {
-    type: string;
-    data: { user: UserTypes; posts: any } | null;
-};
-export type UsersTypes = {
-    data: UserTypes[];
-    isLoading: boolean;
-};
-export type ProfileTypes = {
-    data: { user: UserTypes; posts: any } | null;
+export type UserTypes = {
+    data: UserDataTypes | null;
     isLoading: boolean;
     isAuth: boolean;
 };

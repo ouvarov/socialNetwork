@@ -1,10 +1,10 @@
-export type UserTypes = {
+export type UserDataTypes = {
     id: string;
     email: string;
     isActivated: boolean;
     imageUrl: string;
     userName: string;
-    subscribers: [];
+    following: [];
     followers: [];
     activationLink: string;
     created: string;
