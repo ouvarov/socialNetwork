@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Input, Form, Button } from 'common/components';
 
 import routePaths from 'routers/routePaths';
-import { authSignIn } from 'store/actions';
+import { authLoginIn } from 'store/actions';
 
 const Login: React.FC = () => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
     const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(authSignIn({ email, password }));
+        dispatch(authLoginIn({ email, password }));
     };
 
     return (

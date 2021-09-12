@@ -9,11 +9,12 @@ export const loginUser = (data: AuthTypes): Promise<AxiosResponse<AuthResponseTy
     return api.post('/login', { email, password });
 };
 
-export const checkAuth = (): Promise<AxiosResponse<AuthResponseTypes>> => {
-    return api.get('/refresh');
-};
+export const checkAuth = (): Promise<AxiosResponse<AuthResponseTypes>> => api.get('/refresh');
 
-export const registrationUser = (email: string, password: string, userName: string): Promise<AxiosResponse> =>
-    api.post<AuthTypes>('/registration', { email, password, userName });
+export const registrationUser = (data: AuthTypes): Promise<AxiosResponse> => {
+    const { email, password, userName } = data;
+
+    return api.post<AuthTypes>('/registration', { email, password, userName });
+};
 
 export const logoutUser = (): Promise<void> => api.post('/logout');

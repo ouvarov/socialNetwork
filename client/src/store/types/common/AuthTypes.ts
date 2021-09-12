@@ -12,6 +12,7 @@ export type AuthResponseTypes = {
     refreshToken: string;
     data: {
         user: UserDataTypes;
+        message?: string;
     };
 };
 
@@ -19,6 +20,7 @@ export type AuthTypes = {
     email?: string;
     password?: string;
     accessToken?: string;
+    userName?: string;
 };
 
 export type CallAnyType = any;

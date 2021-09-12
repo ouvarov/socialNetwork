@@ -9,6 +9,7 @@ export enum PROFILE_TYPE {
 
 export enum AUTH_TYPES {
     LOGIN = 'LOGIN',
+    SIGN_UP = 'SIGN-UP',
     LOGOUT = 'LOGOUT',
     CHECK_AUTH = 'CHECK-AUTH',
     NEED_AUTH = 'NEED_AUTH',
