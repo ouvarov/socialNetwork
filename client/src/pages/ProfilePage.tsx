@@ -1,8 +1,6 @@
 import React from 'react';
-import { Profile } from 'profile/commponent';
+import Profile from 'profile';
 
-const ProfilePage: React.FC = () => {
-    return <Profile />;
-};
+const ProfilePage: React.FC = () => <Profile />;
 
 export default ProfilePage;

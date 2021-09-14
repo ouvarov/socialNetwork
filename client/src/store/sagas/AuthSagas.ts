@@ -4,13 +4,18 @@ import { AxiosResponse } from 'axios';
 import { AUTH_TYPES } from 'store/const';
 import { needAuth, setUser } from 'store/actions';
 import { AuthActionTypes, AuthResponseTypes, AuthTypes, SagaCallEffect } from 'store/types';
-import { checkAuth, loginUser, logoutUser, registrationUser } from 'auth/api/services/AuthServices';
+import {
+    checkAuthService,
+    loginUserService,
+    logoutUserService,
+    registrationUserService,
+} from 'auth/api/services/AuthServices';
 
 function* authLogInSaga({ action }: AuthActionTypes): any {
     const { email, password }: AuthTypes = action;
 
     try {
-        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(loginUser, {
+        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(loginUserService, {
             email,
             password,
         });
@@ -29,11 +34,14 @@ function* authSignUpSaga({ action }: AuthActionTypes): any {
     const { email, password, userName }: AuthTypes = action;
 
     try {
-        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(registrationUser, {
-            email,
-            password,
-            userName,
-        });
+        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(
+            registrationUserService,
+            {
+                email,
+                password,
+                userName,
+            },
+        );
 
         yield put(setUser(response.data.user));
 
@@ -45,7 +53,7 @@ function* authSignUpSaga({ action }: AuthActionTypes): any {
 
 function* checkAuthUserSaga(): any {
     try {
-        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(checkAuth);
+        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(checkAuthService);
 
         localStorage.setItem('token', response.data.accessToken);
         yield put(setUser(response.data.user));
@@ -55,7 +63,7 @@ function* checkAuthUserSaga(): any {
     }
 }
 function* logoutAuthUser(): any {
-    yield call<SagaCallEffect<Promise<void>>>(logoutUser);
+    yield call<SagaCallEffect<Promise<void>>>(logoutUserService);
     yield put(needAuth());
 }
 

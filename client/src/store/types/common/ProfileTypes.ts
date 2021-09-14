@@ -1,11 +1,4 @@
-import { UserDataTypes } from 'store/types';
-
-export type PostTypes = {
-    image: string;
-    _id: string;
-    likes: [];
-    text: string;
-};
+import { PostTypes, UserDataTypes } from 'store/types';
 
 export type ProfileTypes = {
     data: { user: UserDataTypes; posts: PostTypes[] } | null;
@@ -14,9 +7,9 @@ export type ProfileTypes = {
 
 export type ProfileActionTypes = {
     type: string;
-    data: { user: UserDataTypes; posts: any } | null;
+    data: { user: UserDataTypes; posts: PostTypes[] } | null;
 };
 export type ProfileSagaTypes = {
     type: string;
-    action: { userId: string };
+    action: { userId: string; postId: string };
 };

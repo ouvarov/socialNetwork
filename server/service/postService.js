@@ -8,7 +8,11 @@ class postService {
 
 		return post.save();
 	}
+	async deletePost(postId) {
+		const post = await PostSchema.deleteOne({_id: postId});
 
+		return post;
+	}
 }
 
 module.exports = new postService();

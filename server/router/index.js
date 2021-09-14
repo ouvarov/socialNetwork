@@ -17,6 +17,7 @@ router.get('/refresh', userController.refreshToken);
 router.get('/users', authMiddleware, userController.getUsers);
 
 router.post('/addPost/:userId', authMiddleware, postController.addPost);
-router.get('/profile/:userId', authMiddleware, postController.getPosts);
+router.get('/profile/:userId', authMiddleware, postController.getProfile);
+router.delete('/deletePost/:postId', authMiddleware, postController.deletePost);
 
 module.exports = router

@@ -16,7 +16,7 @@ class PostControllers {
 	async removePost(request, response, next) {
 
 	}
-	async getPosts(request, response, next) {
+	async getProfile(request, response, next) {
 		try {
 			const userId = request.params.userId
 			const findAllPosts = await postModel.find({ownerId: userId});
@@ -25,6 +25,16 @@ class PostControllers {
 
 			return response.json({user, posts: [...findAllPosts]})
 
+		} catch (e) {
+			next(e)
+		}
+	}
+	async deletePost (request, response, next) {
+		try {
+			const postId = request.params.postId;
+			const postData = await postService.deletePost(postId);
+
+			return response.json(postData)
 		} catch (e) {
 			next(e)
 		}
