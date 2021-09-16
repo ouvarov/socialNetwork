@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
+import { Sidebar } from 'common/components';
 import { routePaths } from 'routers';
 import { StateTypes } from 'store/types';
 
@@ -14,6 +15,7 @@ const PrivateRoute: React.FC<PrivateRoutePropsType> = ({ component: Component, .
     if (isAuth) {
         return (
             <Route {...restProps}>
+                <Sidebar />
                 <Component />
             </Route>
         );

@@ -10,7 +10,7 @@ const profileReducer = (profile: ProfileTypes = { data: null, isLoading: true },
                 isLoading: false,
             };
         case PROFILE_TYPE.CLEAN_PROFILE:
-            return { data: null };
+            return { data: [], posts: [], isLoading: true };
         default:
             return profile;
     }

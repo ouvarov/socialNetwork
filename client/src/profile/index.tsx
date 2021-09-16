@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StateTypes } from 'store/types';
 
 import { Loading } from 'common/components';
-import { getProfile } from 'store/actions';
+import { cleanProfile, getProfile } from 'store/actions';
 import { ProfileInfo, Post } from 'profile/commponent';
 
 const Profile: React.FC = () => {
@@ -14,14 +14,19 @@ const Profile: React.FC = () => {
 
     useEffect(() => {
         dispatch(getProfile(userId));
-    }, []);
+
+        return (): void => {
+            dispatch(cleanProfile());
+        };
+    }, [userId]);
+
     if (isLoading) return <Loading />;
 
     return (
-        <>
+        <div>
             <ProfileInfo />
             <Post userId={userId} />
-        </>
+        </div>
     );
 };
 
