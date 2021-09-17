@@ -13,6 +13,8 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+    const isDisabled = ![email, password].every(Boolean);
+
     const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(authLoginIn({ email, password }));
@@ -28,7 +30,9 @@ const Login: React.FC = () => {
                 onChange={e => setPassword(e.target.value)}
                 placeholder="password"
             />
-            <Button type="submit">Log In</Button>
+            <Button isDisabled={isDisabled} type="submit">
+                Log In
+            </Button>
             <Link to={routePaths.signUpPage()}>Sign up</Link>
         </Form>
     );

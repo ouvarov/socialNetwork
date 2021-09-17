@@ -10,6 +10,8 @@ const SingUp: React.FC = () => {
     const [password, setPassword] = useState<string>('');
     const [userName, setUserName] = useState<string>('');
 
+    const isDisabled = ![email, password, userName].every(Boolean);
+
     const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(authSignUp({ email, password, userName }));
@@ -39,7 +41,9 @@ const SingUp: React.FC = () => {
                     value={userName}
                     onChange={e => setUserName(e.target.value)}
                 />
-                <Button type="submit">Sign up</Button>
+                <Button type="submit" isDisabled={isDisabled}>
+                    Sign up
+                </Button>
             </Form>
         </div>
     );

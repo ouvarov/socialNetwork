@@ -1,6 +1,6 @@
 export type PostTypes = {
     image: string;
-    _id: string;
+    id: string;
     likes: [];
     text: string;
     ownerId: string;
@@ -16,4 +16,5 @@ export type PostDataType = {
     text?: string;
     image?: string;
     postId?: string;
+    onComplete?: any;
 };

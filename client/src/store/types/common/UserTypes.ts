@@ -2,10 +2,10 @@ import { UserDataTypes } from 'store/types';
 
 export type UserActionTypes = {
     type: string;
-    data: UserDataTypes[];
+    data: UserDataTypes;
 };
 export type UserTypes = {
-    data: UserDataTypes | null;
+    data: UserDataTypes;
     isLoading: boolean;
     isAuth: boolean;
 };

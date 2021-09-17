@@ -26,7 +26,7 @@ function* authLogInSaga({ action }: AuthActionTypes): any {
 
         yield put(setUser(response.data.user));
     } catch ({ response }) {
-        console.log(response);
+        console.log(response.message);
     }
 }
 
@@ -47,7 +47,7 @@ function* authSignUpSaga({ action }: AuthActionTypes): any {
 
         localStorage.setItem('token', response.data.accessToken);
     } catch ({ response }) {
-        console.log(response);
+        console.log(response.message);
     }
 }
 
@@ -63,8 +63,12 @@ function* checkAuthUserSaga(): any {
     }
 }
 function* logoutAuthUser(): any {
-    yield call<SagaCallEffect<Promise<void>>>(logoutUserService);
-    yield put(needAuth());
+    try {
+        yield call<SagaCallEffect<Promise<void>>>(logoutUserService);
+        yield put(needAuth());
+    } catch ({ response }) {
+        console.log(response.message);
+    }
 }
 
 export default function* authSagas() {

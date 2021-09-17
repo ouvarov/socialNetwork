@@ -1,3 +1,3 @@
-export * from './common/userListActions';
-export * from './common/userActions';
-export * from './common/profileActions';
+export * from './userListActions';
+export * from './userActions';
+export * from './profileActions';

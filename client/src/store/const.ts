@@ -6,8 +6,8 @@ export enum PROFILE_TYPE {
     CLEAN_PROFILE = 'CLEAN-PROFILE',
     GET_PROFILE = 'GET-PROFILE',
     ADD_POST = 'ADD-POST',
-    SET_POST = 'SET-POST',
     DELETE_POST = 'DELETE-POST',
+    LIKE_POST = 'LIKE-POST',
 }
 
 export enum AUTH_TYPES {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Textarea, Input, Button } from 'common/components';
 import { StateTypes } from 'store/types';
-import { addPost, deletePost } from 'store/actions';
+import { addPost, deletePost, likePost } from 'store/actions';
 
 type PostPropsType = {
     userId: string;
@@ -17,11 +17,15 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
     const user = useSelector((state: StateTypes) => state.user?.data?.id);
 
     const isOwnerPost = user === userId;
+    const isDisabled = ![image, text].every(Boolean);
 
-    const handleOnClickAddPost = () => {
-        dispatch(addPost({ image, text, userId }));
+    const onCompletePost = (): void => {
         setImage('');
         setText('');
+    };
+
+    const handleOnClickAddPost = () => {
+        dispatch(addPost({ image, text, userId }, onCompletePost));
     };
 
     return (
@@ -30,22 +34,30 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
                 <div>
                     <Input name="icon" id="icon" onChange={e => setImage(e.target.value)} value={image} />
                     <Textarea name="text" id="text" onChange={e => setText(e.target.value)} value={text} />
-                    <Button onClick={handleOnClickAddPost}>Add Post</Button>
+                    <Button isDisabled={isDisabled} onClick={handleOnClickAddPost}>
+                        Add Post
+                    </Button>
                 </div>
             )}
             {!!posts?.length && (
                 <div>
-                    {posts.map(({ image, _id, likes, text, ownerId }) => (
-                        <div key={_id}>
+                    {posts.map(({ image, id, likes, text, ownerId }) => (
+                        <div key={id}>
                             <figure>
                                 <img src={image} alt="post icon" />
                             </figure>
                             <p>{text}</p>
-                            <div>{likes.length}</div>
+                            <Button
+                                onClick={() => {
+                                    dispatch(likePost({ postId: id, userId }));
+                                }}
+                            >
+                                Like {likes.length}
+                            </Button>
                             {isOwnerPost && (
                                 <Button
                                     onClick={() => {
-                                        dispatch(deletePost({ postId: _id, userId: ownerId }));
+                                        dispatch(deletePost({ postId: id, userId: ownerId }));
                                     }}
                                 >
                                     Delete Post

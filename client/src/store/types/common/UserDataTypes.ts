@@ -4,8 +4,8 @@ export type UserDataTypes = {
     isActivated: boolean;
     imageUrl: string;
     userName: string;
-    following: [];
-    followers: [];
+    following: string[];
+    followers: string[];
     activationLink: string;
     created: string;
 };
