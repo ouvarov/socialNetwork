@@ -17,16 +17,17 @@ class postService {
 	async likePost(postId, refreshToken) {
 		const userData = tokenService.validationRefreshToken(refreshToken);
 		const findPost = await PostSchema.findById(postId);
-		const findLikeId = findPost.likes.filter((userId) => userId === userData.id);
+		const postLikes = findPost.likes;
+		const findLikeId = postLikes.filter((userId) => userId === userData.id);
 
 		if (!!findLikeId.length) {
-			const findIndex = findLikeId.indexOf(userData.id)
+			const findIndex = postLikes.indexOf(userData.id);
 
-			await findPost.likes.splice(findIndex, 1);
+			await postLikes.splice(findIndex, 1);
 		} else {
-			await findPost.likes.push(userData.id);
+			await postLikes.push(userData.id);
 		}
-		return findPost.save()
+		return findPost.save();
 	}
 }
 
