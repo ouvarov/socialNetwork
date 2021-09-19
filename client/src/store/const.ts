@@ -8,6 +8,7 @@ export enum PROFILE_TYPE {
     ADD_POST = 'ADD-POST',
     DELETE_POST = 'DELETE-POST',
     LIKE_POST = 'LIKE-POST',
+    FOLLOW = 'FOLLOW',
 }
 
 export enum AUTH_TYPES {

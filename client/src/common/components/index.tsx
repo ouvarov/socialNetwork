@@ -7,3 +7,4 @@ export { default as Input } from './Input';
 export { default as UserIcon } from './UserIcon';
 export { default as Textarea } from './Textarea';
 export { default as Sidebar } from './Sidebar';
+export { default as PostIcon } from './PostIcon';

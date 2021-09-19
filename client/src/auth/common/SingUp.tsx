@@ -12,7 +12,7 @@ const SingUp: React.FC = () => {
 
     const isDisabled = ![email, password, userName].every(Boolean);
 
-    const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         dispatch(authSignUp({ email, password, userName }));
     };
@@ -25,21 +25,21 @@ const SingUp: React.FC = () => {
                     name="email"
                     value={email}
                     placeholder="email"
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e): void => setEmail(e.target.value)}
                 />
                 <Input
                     id="password"
                     name="password"
                     placeholder="password"
                     value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={(e): void => setPassword(e.target.value)}
                 />
                 <Input
                     id="userName"
                     name="userName"
                     placeholder="userName"
                     value={userName}
-                    onChange={e => setUserName(e.target.value)}
+                    onChange={(e): void => setUserName(e.target.value)}
                 />
                 <Button type="submit" isDisabled={isDisabled}>
                     Sign up

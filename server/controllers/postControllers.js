@@ -1,7 +1,4 @@
-const postModel = require('../models/postModel');
 const postService = require('../service/postService');
-const UserModel = require('../models/userModel');
-const UserDto = require('../dtos/userDto');
 const PostDto = require('../dtos/postDto');
 
 class PostControllers {
@@ -17,23 +14,7 @@ class PostControllers {
 			next(e)
 		}
 	}
-	async removePost(request, response, next) {
-
-	}
-	async getProfile(request, response, next) {
-		try {
-			const userId = request.params.userId
-			const findAllPosts = await postModel.find({ownerId: userId});
-			const getUser = await UserModel.findOne({_id: userId});
-			const postDto = findAllPosts.map((item) => new PostDto(item))
-			const user = new UserDto(getUser);
-
-			return response.json({user, posts: [...postDto]})
-		} catch (e) {
-			next(e)
-		}
-	}
-	async deletePost (request, response, next) {
+	async removePost (request, response, next) {
 		try {
 			const postId = request.params.postId;
 			const postData = await postService.deletePost(postId);

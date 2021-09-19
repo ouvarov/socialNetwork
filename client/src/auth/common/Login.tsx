@@ -15,19 +15,25 @@ const Login: React.FC = () => {
 
     const isDisabled = ![email, password].every(Boolean);
 
-    const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleOneSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         dispatch(authLoginIn({ email, password }));
     };
 
     return (
         <Form onSubmit={handleOneSubmit}>
-            <Input id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="email" />
+            <Input
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e): void => setEmail(e.target.value)}
+                placeholder="email"
+            />
             <Input
                 id="password"
                 name="password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e): void => setPassword(e.target.value)}
                 placeholder="password"
             />
             <Button isDisabled={isDisabled} type="submit">

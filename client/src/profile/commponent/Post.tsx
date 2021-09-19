@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Textarea, Input, Button } from 'common/components';
+
+import { Textarea, Input, Button, PostIcon } from 'common/components';
+
 import { StateTypes } from 'store/types';
 import { addPost, deletePost, likePost } from 'store/actions';
 
@@ -24,7 +26,15 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
         setText('');
     };
 
-    const handleOnClickAddPost = () => {
+    const onDeletePostClick = (postId: string, userId: string): void => {
+        dispatch(deletePost({ postId, userId }));
+    };
+
+    const onLikePostClick = (postId: string, userId: string): void => {
+        dispatch(likePost({ postId, userId }));
+    };
+
+    const handleOnAddPostClick = (): void => {
         dispatch(addPost({ image, text, userId }, onCompletePost));
     };
 
@@ -32,9 +42,9 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
         <div>
             {isOwnerPost && (
                 <div>
-                    <Input name="icon" id="icon" onChange={e => setImage(e.target.value)} value={image} />
-                    <Textarea name="text" id="text" onChange={e => setText(e.target.value)} value={text} />
-                    <Button isDisabled={isDisabled} onClick={handleOnClickAddPost}>
+                    <Input name="icon" id="icon" onChange={(e): void => setImage(e.target.value)} value={image} />
+                    <Textarea name="text" id="text" onChange={(e): void => setText(e.target.value)} value={text} />
+                    <Button isDisabled={isDisabled} onClick={handleOnAddPostClick}>
                         Add Post
                     </Button>
                 </div>
@@ -43,21 +53,19 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
                 <div>
                     {posts.map(({ image, id, likes, text, ownerId }) => (
                         <div key={id}>
-                            <figure>
-                                <img src={image} alt="post icon" />
-                            </figure>
+                            <PostIcon imageUrl={image} />
                             <p>{text}</p>
                             <Button
-                                onClick={() => {
-                                    dispatch(likePost({ postId: id, userId }));
+                                onClick={(): void => {
+                                    onLikePostClick(id, userId);
                                 }}
                             >
                                 Like {likes.length}
                             </Button>
                             {isOwnerPost && (
                                 <Button
-                                    onClick={() => {
-                                        dispatch(deletePost({ postId: id, userId: ownerId }));
+                                    onClick={(e): void => {
+                                        onDeletePostClick(id, ownerId);
                                     }}
                                 >
                                     Delete Post

@@ -1,5 +1,5 @@
 import { PROFILE_TYPE } from 'store/const';
-import { PostDataType, PostTypes, ProfileTypes, UserDataTypes } from 'store/types';
+import { PostDataType, UserDataTypes } from 'store/types';
 
 export const setProfile = (data: UserDataTypes) => ({ type: PROFILE_TYPE.SET_PROFILE, data });
 export const cleanProfile = () => ({ type: PROFILE_TYPE.CLEAN_PROFILE });
@@ -16,4 +16,9 @@ export const deletePost = ({ postId, userId }: PostDataType) => ({
 export const likePost = ({ postId, userId }: PostDataType) => ({
     type: PROFILE_TYPE.LIKE_POST,
     action: { postId, userId },
+});
+
+export const follow = (userId: string) => ({
+    type: PROFILE_TYPE.FOLLOW,
+    action: { userId },
 });

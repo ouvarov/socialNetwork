@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Switch, BrowserRouter } from 'react-router-dom';
+
 import { routePaths, AnonymousRoute, PrivateRoute } from 'routers';
 import { LoginPage, SingUpPage, UsersListPage, ProfilePage } from 'pages';
 

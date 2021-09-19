@@ -15,3 +15,5 @@ export const deletePostService = (postId: string): Promise<AxiosResponse<PostTyp
     api.delete(`/deletePost/${postId}`);
 
 export const likePostService = (postId: string): Promise<AxiosResponse<PostTypes>> => api.put(`/likePost/${postId}`);
+
+export const followProfileService = (userId: string): Promise<AxiosResponse<PostTypes>> => api.put(`/follow/${userId}`);

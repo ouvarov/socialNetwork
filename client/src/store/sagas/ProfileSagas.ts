@@ -3,6 +3,7 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 import {
     addPostService,
     deletePostService,
+    followProfileService,
     getProfileService,
     likePostService,
 } from 'profile/api/services/ProfileServices';
@@ -30,7 +31,7 @@ function* setPostSaga({ action }: PostActionTypes): any {
     const { text, image, userId, onComplete } = action;
 
     try {
-        const response = yield call<SagaCallEffect<Promise<AxiosResponse<PostTypes>>>>(addPostService, {
+        yield call<SagaCallEffect<Promise<AxiosResponse<PostTypes>>>>(addPostService, {
             text,
             image,
             userId,
@@ -41,8 +42,8 @@ function* setPostSaga({ action }: PostActionTypes): any {
         }
 
         yield call<SagaCallEffect<PostDataType>>(onComplete);
-    } catch ({ response }) {
-        console.log(response.data.message);
+    } catch (e) {
+        console.log(e);
     }
 }
 function* deletePostSaga({ action }: ProfileSagaTypes): any {
@@ -57,11 +58,22 @@ function* deletePostSaga({ action }: ProfileSagaTypes): any {
 }
 
 function* likePostSaga({ action }: ProfileSagaTypes): any {
-    const { postId, userId } = action;
+    const { postId = '', userId } = action;
 
     try {
         yield call(likePostService, postId);
 
+        yield put(getProfile(userId));
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function* followProfileSaga({ action }: ProfileSagaTypes): any {
+    const { userId } = action;
+
+    try {
+        yield call(followProfileService, userId);
         yield put(getProfile(userId));
     } catch (e) {
         console.log(e);
@@ -74,5 +86,6 @@ export default function* ProfileSagas() {
         takeLatest(PROFILE_TYPE.ADD_POST, setPostSaga),
         takeLatest(PROFILE_TYPE.DELETE_POST, deletePostSaga),
         takeLatest(PROFILE_TYPE.LIKE_POST, likePostSaga),
+        takeLatest(PROFILE_TYPE.FOLLOW, followProfileSaga),
     ]);
 }
