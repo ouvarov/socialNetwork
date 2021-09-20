@@ -18,10 +18,9 @@ class postService {
 		const userData = tokenService.validationRefreshToken(refreshToken);
 		const findPost = await PostSchema.findById(postId);
 		const postLikes = findPost.likes;
-		const findLikeId = postLikes.filter((userId) => userId === userData.id);
+		const findIndex = postLikes.indexOf(userData.id);
 
-		if (!!findLikeId.length) {
-			const findIndex = postLikes.indexOf(userData.id);
+		if (findIndex >= 0) {
 
 			await postLikes.splice(findIndex, 1);
 		} else {

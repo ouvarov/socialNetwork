@@ -1,0 +1,6 @@
+.nav-link {
+    @include font-style($montserrat, 32px, $orange, 40px);
+    &--active {
+        color: $green
+    }
+}

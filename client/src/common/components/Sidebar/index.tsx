@@ -10,16 +10,18 @@ const Sidebar: React.FC = () => {
 
     return (
         <aside className="sidebar">
-            <NavLink to={routePaths.usersPage()} className="nav-link" activeClassName="nav-link--active">
-                Users List
-            </NavLink>
-            <NavLink
-                to={routePaths.profilePage(user?.id ?? '')}
-                className="nav-link"
-                activeClassName="nav-link--active"
-            >
-                Profile
-            </NavLink>
+            <div className="sidebar__wrap">
+                <NavLink to={routePaths.usersPage()} className="nav-link" activeClassName="nav-link--active">
+                    Users List
+                </NavLink>
+                <NavLink
+                    to={routePaths.profilePage(user?.id ?? '')}
+                    className="nav-link"
+                    activeClassName="nav-link--active"
+                >
+                    Profile
+                </NavLink>
+            </div>
         </aside>
     );
 };

@@ -14,10 +14,9 @@ class profileService {
 		const userFollowers = followerData.followers;
 		const ownerFollowing = userDto.following;
 
-		const findFollowId = userFollowers.filter((userId) => String(userId) === String(userDto.id));
+		const findIndexFollower = userFollowers.indexOf(userDto.id);
 
-		if (!!findFollowId.length) {
-			const findIndexFollower = userFollowers.indexOf(userDto.id);
+		if (findIndexFollower >= 0) {
 			const findIndexFollowing = userFollowers.indexOf(followerDto.id);
 
 			await userFollowers.splice(findIndexFollower, 1);

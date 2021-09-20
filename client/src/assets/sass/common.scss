@@ -9,9 +9,13 @@ $montserrat: 'Montserrat', sans-serif;
 $montserrat-bold: 'Montserrat-Bold', sans-serif;
 $montserrat-semi-bold: 'Montserrat-Semi-Bold', sans-serif;
 
-
 .App {
     display: flex;
     height: 100vh;
     width: 100vw;
+    background-image: $dark-gradient;
+    overflow: auto;
+}
+.page {
+    padding: $indent;
 }

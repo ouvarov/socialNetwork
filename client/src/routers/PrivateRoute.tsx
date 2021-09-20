@@ -18,7 +18,9 @@ const PrivateRoute: React.FC<PrivateRoutePropsType> = ({ component: Component, .
         return (
             <Route {...restProps}>
                 <Sidebar />
-                <Component />
+                <div className="page">
+                    <Component />
+                </div>
             </Route>
         );
     }
