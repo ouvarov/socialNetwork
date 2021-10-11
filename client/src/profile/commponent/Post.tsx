@@ -6,6 +6,8 @@ import { Textarea, Input, Button, PostIcon } from 'common/components';
 import { StateTypes } from 'store/types';
 import { addPost, deletePost, likePost } from 'store/actions';
 
+import { changePost } from 'profile/api/sockets';
+
 type PostPropsType = {
     userId: string;
 };
@@ -24,17 +26,34 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
     const onCompletePost = (): void => {
         setImage('');
         setText('');
+        changePost(userId);
     };
 
     const onDeletePostClick = (postId: string, userId: string): void => {
-        dispatch(deletePost({ postId, userId }));
+        dispatch(
+            deletePost({
+                postId,
+                userId,
+                onComplete: () => {
+                    changePost(userId);
+                },
+            }),
+        );
     };
 
     const onLikePostClick = (postId: string, userId: string): void => {
-        dispatch(likePost({ postId, userId }));
+        dispatch(
+            likePost({
+                postId,
+                userId,
+                onComplete: () => {
+                    changePost(userId);
+                },
+            }),
+        );
     };
 
-    const handleOnAddPostClick = (): void => {
+    const handleOnAddPostClick = () => {
         dispatch(addPost({ image, text, userId }, onCompletePost));
     };
 

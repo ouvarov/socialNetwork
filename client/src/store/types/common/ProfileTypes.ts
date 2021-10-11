@@ -11,5 +11,5 @@ export type ProfileActionTypes = {
 };
 export type ProfileSagaTypes = {
     type: string;
-    action: { userId: string; postId: string };
+    action: { userId: string; postId: string; onComplete: any; changeProfile: any };
 };

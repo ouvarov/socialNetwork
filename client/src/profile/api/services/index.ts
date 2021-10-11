@@ -1,4 +1,4 @@
-import api from 'api';
+import { api } from 'api';
 import { AxiosResponse } from 'axios';
 import { AuthResponseTypes, PostDataType, PostTypes } from 'store/types';
 

@@ -4,12 +4,7 @@ import { AxiosResponse } from 'axios';
 import { AUTH_TYPES } from 'store/const';
 import { needAuth, setUser } from 'store/actions';
 import { AuthActionTypes, AuthResponseTypes, AuthTypes, SagaCallEffect } from 'store/types';
-import {
-    checkAuthService,
-    loginUserService,
-    logoutUserService,
-    registrationUserService,
-} from 'auth/api/services/AuthServices';
+import { checkAuthService, loginUserService, logoutUserService, registrationUserService } from 'auth/api/services';
 
 function* authLogInSaga({ action }: AuthActionTypes): any {
     const { email, password }: AuthTypes = action;

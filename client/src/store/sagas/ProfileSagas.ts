@@ -6,7 +6,7 @@ import {
     followProfileService,
     getProfileService,
     likePostService,
-} from 'profile/api/services/ProfileServices';
+} from 'profile/api/services';
 import { PROFILE_TYPE } from 'store/const';
 import { getProfile, setProfile } from 'store/actions';
 import { PostActionTypes, PostDataType, PostTypes } from 'store/types/common/PostTypes';
@@ -47,34 +47,37 @@ function* setPostSaga({ action }: PostActionTypes): any {
     }
 }
 function* deletePostSaga({ action }: ProfileSagaTypes): any {
-    const { postId, userId } = action;
+    const { postId, userId, onComplete } = action;
 
     try {
         yield call<SagaCallEffect<Promise<AxiosResponse<PostTypes>>>>(deletePostService, postId);
         yield put(getProfile(userId));
+        yield call<SagaCallEffect<PostDataType>>(onComplete);
     } catch (e) {
         console.log(e);
     }
 }
 
 function* likePostSaga({ action }: ProfileSagaTypes): any {
-    const { postId = '', userId } = action;
+    const { postId = '', userId, onComplete } = action;
 
     try {
         yield call(likePostService, postId);
 
         yield put(getProfile(userId));
+        yield call<SagaCallEffect<PostDataType>>(onComplete);
     } catch (e) {
         console.log(e);
     }
 }
 
 function* followProfileSaga({ action }: ProfileSagaTypes): any {
-    const { userId } = action;
+    const { userId, changeProfile } = action;
 
     try {
         yield call(followProfileService, userId);
         yield put(getProfile(userId));
+        yield call<SagaCallEffect<PostDataType>>(changeProfile);
     } catch (e) {
         console.log(e);
     }

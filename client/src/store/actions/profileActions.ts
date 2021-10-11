@@ -9,16 +9,16 @@ export const addPost = ({ image, text, userId }: PostDataType, onComplete: any) 
     type: PROFILE_TYPE.ADD_POST,
     action: { image, text, userId, onComplete },
 });
-export const deletePost = ({ postId, userId }: PostDataType) => ({
+export const deletePost = ({ postId, userId, onComplete }: PostDataType) => ({
     type: PROFILE_TYPE.DELETE_POST,
-    action: { postId, userId },
+    action: { postId, userId, onComplete },
 });
-export const likePost = ({ postId, userId }: PostDataType) => ({
+export const likePost = ({ postId, userId, onComplete }: PostDataType) => ({
     type: PROFILE_TYPE.LIKE_POST,
-    action: { postId, userId },
+    action: { postId, userId, onComplete },
 });
 
-export const follow = (userId: string) => ({
+export const follow = (userId: string, changeProfile: any) => ({
     type: PROFILE_TYPE.FOLLOW,
-    action: { userId },
+    action: { userId, changeProfile },
 });

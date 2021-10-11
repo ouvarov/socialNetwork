@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { Button, Form, Input } from 'common/components';
+
 import { authSignUp } from 'store/actions';
 
 const SingUp: React.FC = () => {

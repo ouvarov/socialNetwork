@@ -7,10 +7,19 @@ const profileService = require('../service/profileService')
 class ProfileControllers {
 	async getProfile(request, response, next) {
 		try {
+			const sortPost = (a, b) =>  {
+				if (a.createDate > b.createDate) {
+					return 1;
+				}
+				if (a.createDate < b.createDate) {
+					return -1;
+				}
+				return 0;
+			};
 			const userId = request.params.userId
 			const findAllPosts = await postModel.find({ownerId: userId});
 			const getUser = await UserModel.findOne({_id: userId});
-			const postDto = findAllPosts.map((item) => new PostDto(item))
+			const postDto = findAllPosts.sort((a, b) =>  sortPost(a, b)).map((item) => new PostDto(item));
 			const user = new UserDto(getUser);
 
 			return response.json({user, posts: [...postDto]})

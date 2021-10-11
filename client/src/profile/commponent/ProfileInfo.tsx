@@ -6,6 +6,8 @@ import { Button, UserIcon } from 'common/components';
 import { follow, logoutUser } from 'store/actions';
 import { StateTypes } from 'store/types';
 
+import { changeProfile } from 'profile/api/sockets';
+
 const ProfileInfo: React.FC = () => {
     const dispatch = useDispatch();
     const profile = useSelector((state: StateTypes) => state.profile.data?.user);
@@ -14,7 +16,7 @@ const ProfileInfo: React.FC = () => {
     const isOwnerProfile = profile?.id === userId;
 
     const onFollowClick = (userId: string): void => {
-        dispatch(follow(userId));
+        dispatch(follow(userId, changeProfile));
     };
 
     return (
@@ -23,15 +25,14 @@ const ProfileInfo: React.FC = () => {
                 <div>
                     <UserIcon imageUrl={profile.imageUrl} />
                     <div>{profile.userName}</div>
-                    {!isOwnerProfile && (
-                        <Button
-                            onClick={() => {
-                                onFollowClick(profile.id);
-                            }}
-                        >
-                            {profile.followers.length}
-                        </Button>
-                    )}
+                    <Button
+                        onClick={() => {
+                            onFollowClick(profile.id);
+                        }}
+                        isDisabled={isOwnerProfile}
+                    >
+                        {profile.followers.length}
+                    </Button>
                     <div>{profile.following.length}</div>
                 </div>
             )}

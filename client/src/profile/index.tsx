@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { StateTypes } from 'store/types';
 
 import { Loading } from 'common/components';
-import { cleanProfile, getProfile } from 'store/actions';
 import { ProfileInfo, Post } from 'profile/commponent';
+
+import { StateTypes } from 'store/types';
+import { cleanProfile, getProfile } from 'store/actions';
+
+import { socket } from 'api';
+import { SOCKET_CONSTANTS } from 'api/constants';
+import { joinProfile } from 'profile/api/sockets';
 
 const Profile: React.FC = () => {
     const { userId } = useParams<Record<string, string>>();
@@ -19,6 +24,20 @@ const Profile: React.FC = () => {
             dispatch(cleanProfile());
         };
     }, [userId]);
+
+    useEffect(() => {
+        const handleUpdateProfile = () => {
+            dispatch(getProfile(userId));
+        };
+
+        joinProfile(userId);
+
+        socket.on(SOCKET_CONSTANTS.UPDATE_PROFILE, handleUpdateProfile);
+
+        return () => {
+            socket.off(SOCKET_CONSTANTS.UPDATE_PROFILE, handleUpdateProfile);
+        };
+    }, []);
 
     if (isLoading) return <Loading />;
 

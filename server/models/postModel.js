@@ -5,7 +5,8 @@ const PostSchema = new Schema({
 	text: {type: String, required: true},
 	image: {type: String},
 	id: {type: String},
-	likes: {type: Array, default: []}
+	likes: {type: Array, default: []},
+	createDate: {type: String}
 });
 
 module.exports = model('Post', PostSchema)

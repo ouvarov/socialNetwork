@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Input, Form, Button } from 'common/components';
 
-import routePaths from 'routers/routePaths';
 import { authLoginIn } from 'store/actions';
+import routePaths from 'routers/routePaths';
 
 const Login: React.FC = () => {
     const dispatch = useDispatch();

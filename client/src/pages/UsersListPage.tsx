@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import api from 'api';
 import { Loading } from 'common/components';
 
+import { api } from 'api';
 import { setUsersList } from 'store/actions';
 import { StateTypes } from 'store/types';
 import toDate from 'utils/helpers/toDate';

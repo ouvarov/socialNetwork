@@ -1,0 +1,8 @@
+export const SOCKET_URL = 'http://localhost:5000/';
+
+export enum SOCKET_CONSTANTS {
+    JOIN_PROFILE = 'JOIN-PROFILE',
+    UPDATE_PROFILE = 'UPDATE-PROFILE',
+    CHANGE_POST = 'CHANGE-POST',
+    CHANGE_PROFILE = 'CHANGE_PROFILE',
+}

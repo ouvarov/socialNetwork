@@ -4,8 +4,9 @@ const tokenService = require('../service/tokenService');
 
 class postService {
 	async addPost(ownerId, text, image) {
+		const createDate = new Date;
 
-		const post = await PostSchema.create({ownerId, text, image})
+		const post = await PostSchema.create({ownerId, text, image, createDate})
 
 		return post.save();
 	}
@@ -21,7 +22,6 @@ class postService {
 		const findIndex = postLikes.indexOf(userData.id);
 
 		if (findIndex >= 0) {
-
 			await postLikes.splice(findIndex, 1);
 		} else {
 			await postLikes.push(userData.id);

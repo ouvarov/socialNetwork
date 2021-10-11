@@ -1,14 +1,2 @@
-import axios from 'axios';
-import { API_URL } from 'constants/ApiConstants';
-
-const api = axios.create({
-    withCredentials: true,
-    baseURL: API_URL,
-});
-
-api.interceptors.request.use(config => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
-    return config;
-});
-
-export default api;
+export { default as api } from './api';
+export { default as socket } from './socket';
