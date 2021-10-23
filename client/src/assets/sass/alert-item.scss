@@ -1,0 +1,10 @@
+.alert-item {
+    @include font-style($montserrat-bold, 16px, $white);
+    background-color: $error;
+    border-radius: 8px;
+    margin: $indent auto;
+    width: 100%;
+    max-width: 768px;
+    padding: $indent;
+    text-align: center;
+}

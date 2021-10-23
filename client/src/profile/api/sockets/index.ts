@@ -5,4 +5,6 @@ export const changePost = (userId: any) => socket.emit(SOCKET_CONSTANTS.CHANGE_P
 
 export const changeProfile = (userId: any) => socket.emit(SOCKET_CONSTANTS.CHANGE_PROFILE, { room: userId });
 
+export const changePostText = (userId: any) => socket.emit(SOCKET_CONSTANTS.CHANGE_POST_TEXT, { room: userId });
+
 export const joinProfile = (userId: string) => socket.emit(SOCKET_CONSTANTS.JOIN_PROFILE, userId);

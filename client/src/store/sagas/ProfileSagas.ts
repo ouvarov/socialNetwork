@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { all, call, takeLatest, put } from 'redux-saga/effects';
+
 import {
     addPostService,
     deletePostService,
@@ -8,7 +9,7 @@ import {
     likePostService,
 } from 'profile/api/services';
 import { PROFILE_TYPE } from 'store/const';
-import { getProfile, setProfile } from 'store/actions';
+import { getError, getProfile, setProfile } from 'store/actions';
 import { PostActionTypes, PostDataType, PostTypes } from 'store/types/common/PostTypes';
 import { ProfileSagaTypes } from 'store/types/common/ProfileTypes';
 import { AuthResponseTypes, SagaCallEffect } from 'store/types/common/AuthTypes';
@@ -24,7 +25,7 @@ function* getProfileSaga({ action }: ProfileSagaTypes): any {
 
         yield put(setProfile(response.data));
     } catch ({ response }) {
-        console.log(response);
+        yield put(getError(response));
     }
 }
 function* setPostSaga({ action }: PostActionTypes): any {
@@ -42,8 +43,8 @@ function* setPostSaga({ action }: PostActionTypes): any {
         }
 
         yield call<SagaCallEffect<PostDataType>>(onComplete);
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 function* deletePostSaga({ action }: ProfileSagaTypes): any {
@@ -53,8 +54,8 @@ function* deletePostSaga({ action }: ProfileSagaTypes): any {
         yield call<SagaCallEffect<Promise<AxiosResponse<PostTypes>>>>(deletePostService, postId);
         yield put(getProfile(userId));
         yield call<SagaCallEffect<PostDataType>>(onComplete);
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 
@@ -66,8 +67,8 @@ function* likePostSaga({ action }: ProfileSagaTypes): any {
 
         yield put(getProfile(userId));
         yield call<SagaCallEffect<PostDataType>>(onComplete);
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 
@@ -78,8 +79,8 @@ function* followProfileSaga({ action }: ProfileSagaTypes): any {
         yield call(followProfileService, userId);
         yield put(getProfile(userId));
         yield call<SagaCallEffect<PostDataType>>(changeProfile);
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 

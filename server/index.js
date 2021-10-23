@@ -42,6 +42,10 @@ io.on("connection", (socket) => {
 		socket.to(data.room).emit("UPDATE-PROFILE", data);
 	});
 
+	socket.on('CHANGE-POST-TEXT', (data) => {
+		socket.to(data.room).emit("UPDATE-POST-TEXT", data);
+	})
+
 	socket.on("disconnect", () => {
 		console.log("User Disconnected", socket.id);
 	});

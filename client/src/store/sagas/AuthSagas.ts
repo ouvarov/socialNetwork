@@ -2,7 +2,7 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 
 import { AUTH_TYPES } from 'store/const';
-import { needAuth, setUser } from 'store/actions';
+import { getError, needAuth, setUser } from 'store/actions';
 import { AuthActionTypes, AuthResponseTypes, AuthTypes, SagaCallEffect } from 'store/types';
 import { checkAuthService, loginUserService, logoutUserService, registrationUserService } from 'auth/api/services';
 
@@ -20,8 +20,8 @@ function* authLogInSaga({ action }: AuthActionTypes): any {
         }
 
         yield put(setUser(response.data.user));
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 
@@ -41,14 +41,14 @@ function* authSignUpSaga({ action }: AuthActionTypes): any {
         yield put(setUser(response.data.user));
 
         localStorage.setItem('token', response.data.accessToken);
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 
 function* checkAuthUserSaga(): any {
     try {
-        const response = yield call<SagaCallEffect<Promise<AxiosResponse<AuthResponseTypes>>>>(checkAuthService);
+        const response = yield call(checkAuthService);
 
         localStorage.setItem('token', response.data.accessToken);
         yield put(setUser(response.data.user));
@@ -61,8 +61,8 @@ function* logoutAuthUser(): any {
     try {
         yield call<SagaCallEffect<Promise<void>>>(logoutUserService);
         yield put(needAuth());
-    } catch (e) {
-        console.log(e);
+    } catch ({ response }) {
+        yield put(getError(response));
     }
 }
 

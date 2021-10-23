@@ -20,3 +20,9 @@ export enum AUTH_TYPES {
     SET_USER = 'SET-USER',
     CLEAN_USER = 'CLEAN_USER',
 }
+
+export enum ERROR_TYPES {
+    SET_ERROR = 'SET-ERROR',
+    GET_ERROR = 'GET-ERROR',
+    REMOVE_ERROR = 'REMOVE-ERROR',
+}
