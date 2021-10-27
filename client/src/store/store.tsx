@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from 'store/sagas/rootSaga';
-import { userReducer, usersListReducer, profileReducer, errorReducer } from 'store/reducers';
+import { userReducer, usersListReducer, profileReducer, errorReducer, chatReducer } from 'store/reducers';
 
 declare global {
     interface Window {
@@ -17,6 +17,7 @@ const reducers = combineReducers({
     profile: profileReducer,
     user: userReducer,
     error: errorReducer,
+    chat: chatReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

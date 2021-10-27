@@ -1,8 +1,8 @@
 const PostSchema = require('../models/postModel');
-const tokenService = require('../service/tokenService');
+const tokenService = require('../service/tokenServices');
 
 
-class postService {
+class postServices {
 	async addPost(ownerId, text, image) {
 		const createDate = new Date;
 
@@ -30,4 +30,4 @@ class postService {
 	}
 }
 
-module.exports = new postService();
+module.exports = new postServices();

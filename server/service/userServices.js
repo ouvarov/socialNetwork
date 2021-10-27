@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const UserModel = require('../models/userModel');
-const tokenService = require('../service/tokenService');
+const tokenService = require('../service/tokenServices');
 const UserDto = require('../dtos/userDto');
 const apiError = require('../exeptions/apiError');
 
-class UserService {
+class UserServices {
 	async registration(email, password, userName) {
 		const candidate = await UserModel.findOne({email})
 		if (candidate) {
@@ -84,4 +84,4 @@ class UserService {
 	}
 }
 
-module.exports = new UserService();
+module.exports = new UserServices();

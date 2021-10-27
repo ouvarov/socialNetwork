@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Loading } from 'common/components';
-import { ProfileInfo, Post } from 'profile/commponent';
+import { ProfileInfo, Post } from 'profile/commponents';
 
 import { StateTypes } from 'store/types';
 import { cleanProfile, getProfile } from 'store/actions';

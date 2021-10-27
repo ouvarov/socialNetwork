@@ -26,3 +26,7 @@ export enum ERROR_TYPES {
     GET_ERROR = 'GET-ERROR',
     REMOVE_ERROR = 'REMOVE-ERROR',
 }
+export enum CHAT_TYPES {
+    SET_CHAT_LIST = 'SET_CHAT_LIST',
+    GET_CHAT_LIST = 'GET_CHAT_LIST',
+}

@@ -7,6 +7,7 @@ import { follow, logoutUser } from 'store/actions';
 import { StateTypes } from 'store/types';
 
 import { changeProfile } from 'profile/api/sockets';
+import { createChatService } from 'chat/api/services';
 
 const ProfileInfo: React.FC = () => {
     const dispatch = useDispatch();
@@ -35,6 +36,15 @@ const ProfileInfo: React.FC = () => {
                     </Button>
                     <div>{profile.following.length}</div>
                 </div>
+            )}
+            {!isOwnerProfile && (
+                <Button
+                    onClick={() => {
+                        createChatService(profile?.id ?? '').then(data => console.log(data));
+                    }}
+                >
+                    Start speak
+                </Button>
             )}
             <Button
                 onClick={(): void => {

@@ -2,7 +2,7 @@ const UserModel = require('../models/userModel');
 const postModel = require('../models/postModel');
 const UserDto = require('../dtos/userDto');
 const PostDto = require('../dtos/postDto');
-const profileService = require('../service/profileService')
+const profileService = require('../service/profileServices')
 
 class ProfileControllers {
 	async getProfile(request, response, next) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Switch, BrowserRouter } from 'react-router-dom';
 
 import { routePaths, AnonymousRoute, PrivateRoute } from 'routers';
-import { LoginPage, SingUpPage, UsersListPage, ProfilePage } from 'pages';
+import { LoginPage, SingUpPage, UsersListPage, ProfilePage, ChatListPage } from 'pages';
 
 const Routes: React.FC = () => (
     <BrowserRouter>
@@ -11,6 +11,7 @@ const Routes: React.FC = () => (
             <AnonymousRoute path={routePaths.signUpPage()} component={() => <SingUpPage />} />
             <PrivateRoute path={routePaths.usersPage()} component={() => <UsersListPage />} />
             <PrivateRoute path={routePaths.profilePage(':userId')} component={() => <ProfilePage />} />
+            <PrivateRoute path={routePaths.chatsPage()} component={() => <ChatListPage />} />
             <Redirect from="/" to={routePaths.loginPage()} />
         </Switch>
     </BrowserRouter>

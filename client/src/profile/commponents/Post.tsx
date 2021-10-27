@@ -101,7 +101,7 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
                                     onLikePostClick(id, userId);
                                 }}
                             >
-                                Like {likes.length}
+                                Like {likes}
                             </Button>
                             {isOwnerPost && (
                                 <Button
