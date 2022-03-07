@@ -4,4 +4,5 @@ export default {
     usersPage: (): string => '/users',
     profilePage: (userId: string): string => `/profile/${userId}`,
     chatsPage: (): string => '/chats',
+    chatPage: (chatId: string): string => `/chat/${chatId}`,
 };

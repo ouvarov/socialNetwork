@@ -82,3 +82,27 @@
         background: $color url($icon) $position / $size $repeat;
     }
 }
+
+@mixin media($width) {
+    @media only screen and (max-width: $width + px) {
+        @content
+    }
+}
+
+@mixin flex($type: default, $direction: row, $display: flex,  $align-items: null, $justify-content: null
+) {
+    @if $type == center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    @else if $type == between {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    display: $display;
+    flex-direction: $direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}

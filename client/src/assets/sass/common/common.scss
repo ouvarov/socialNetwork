@@ -1,13 +1,59 @@
-@mixin media($width) {
-    @media only screen and (max-width: $width + px) {
-        @content
-    }
-}
-
 //fonts
 $montserrat: 'Montserrat', sans-serif;
 $montserrat-bold: 'Montserrat-Bold', sans-serif;
 $montserrat-semi-bold: 'Montserrat-Semi-Bold', sans-serif;
+
+$body-20R: (
+        'font-family': $montserrat,
+        'font-size': 20px,
+        'line-height': 1.4
+);
+$body-18R: (
+        'font-family': $montserrat,
+        'font-size': 18px,
+        'line-height': 1.4
+);
+$body-16R: (
+        'font-family': $montserrat,
+        'font-size': 16px,
+        'line-height': 1.6
+);
+$body-14R: (
+        'font-family': $montserrat,
+        'font-size': 14px,
+        'line-height': 1.4
+);
+$body-12R: (
+        'font-family': $montserrat,
+        'font-size': 12px,
+        'line-height': 1.4
+);
+$body-18B: (
+        'font-family': $montserrat-bold,
+        'font-size': 18px,
+        'line-height': 1.6
+);
+$body-16B: (
+        'font-family': $montserrat-bold,
+        'font-size': 16px,
+        'line-height': 1.6
+);
+$body-14B: (
+        'font-family': $montserrat-bold,
+        'font-size': 14px,
+        'line-height': 1.4
+);
+$body-12B: (
+        'font-family': $montserrat-bold,
+        'font-size': 12px,
+        'line-height': 1.4
+);
+$body-14SB: (
+        'font-family': $montserrat-semi-bold,
+        'font-size': 14px,
+        'line-height': 1.4
+);
+
 
 .App {
     display: flex;

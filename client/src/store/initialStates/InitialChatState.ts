@@ -8,14 +8,18 @@ export const InitialChatState = {
                 userInfo: InitialUserDataState,
             },
         ],
-        message: [
-            {
-                id: '',
-                userId: '',
-                text: '',
-                createDate: '',
-            },
-        ],
+        chat: {
+            id: '',
+            users: [],
+            messages: [
+                {
+                    id: '',
+                    userInfo: InitialUserDataState,
+                    text: '',
+                    createDate: '',
+                },
+            ],
+        },
     },
     isLoading: true,
 };

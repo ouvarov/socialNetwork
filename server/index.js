@@ -34,9 +34,23 @@ app.use(errorMiddleware)
 
 io.on("connection", (socket) => {
 
+	socket.on("JOIN-CHAT", (data) => {
+		socket.join(data);
+		console.log('user connect chat', data)
+	})
+
 	socket.on("JOIN-PROFILE", (data) => {
 		socket.join(data);
+		console.log('user connect profile', data)
 	});
+
+	socket.on("ADD-MESSAGE", data => {
+		socket.to(data.room).emit("UPDATE-CHAT", data);
+	})
+
+	socket.on("PRINTING-MESSAGE", data => {
+		socket.to(data.room).emit("UPDATE-MESSAGE", data);
+	})
 
 	socket.on("CHANGE-POST", (data) => {
 		socket.to(data.room).emit("UPDATE-PROFILE", data);

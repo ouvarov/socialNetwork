@@ -1,0 +1,7 @@
+.textarea {
+  padding: $indent;
+
+  &__control {
+    @include size(100%);
+  }
+}

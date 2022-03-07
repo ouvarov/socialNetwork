@@ -28,5 +28,12 @@ router.put('/likePost/:postId', authMiddleware, postController.likePost);
 
 router.post('/createChat/:userId', authMiddleware, messageController.createChat);
 router.get('/chats', authMiddleware, messageController.getChats);
+router.get('/getChat/:chatId', authMiddleware, messageController.getChat);
+router.post(
+	'/addMessage',
+	body('chatId'),
+	body('message'),
+	authMiddleware, messageController.addMessage
+);
 
 module.exports = router
