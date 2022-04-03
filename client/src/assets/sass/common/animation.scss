@@ -1,0 +1,29 @@
+@keyframes rotateCircle {
+    0% {
+        opacity: 0;
+    }
+    0% { opacity: 1;
+        transform: rotateZ(36deg);
+    }
+    7% {        
+        transform: rotateZ(0deg);
+    }
+    57% {       
+         transform: rotateZ(0deg);
+        }
+    100% {
+        transform: rotateZ(-324deg);
+        opacity: 1;
+    }
+}
+
+
+@keyframes rotatePreloader {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+    }
+
+}

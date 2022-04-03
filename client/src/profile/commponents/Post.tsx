@@ -18,7 +18,6 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
     const [image, setImage] = useState<string>('');
     const [text, setText] = useState<string>('');
     const [printPost, setPrintPost] = useState<boolean>(false);
-
     const dispatch = useDispatch();
     const posts = useSelector((state: StateTypes) => state.profile.data?.posts);
     const user = useSelector((state: StateTypes) => state.user?.data?.id);
@@ -101,7 +100,7 @@ const Post: React.FC<PostPropsType> = ({ userId }) => {
                                     onLikePostClick(id, userId);
                                 }}
                             >
-                                Like {likes.length}
+                                Like {likes}
                             </Button>
                             {isOwnerPost && (
                                 <Button

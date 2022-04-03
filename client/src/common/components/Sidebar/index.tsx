@@ -21,6 +21,9 @@ const Sidebar: React.FC = () => {
                 >
                     Profile
                 </NavLink>
+                <NavLink to={routePaths.chatsPage()} className="nav-link" activeClassName="nav-link--active">
+                    Chat
+                </NavLink>
             </div>
         </aside>
     );

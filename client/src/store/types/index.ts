@@ -6,3 +6,4 @@ export * from './common/AuthTypes';
 export * from './common/ProfileTypes';
 export * from './common/PostTypes';
 export * from './common/ErrorTypes';
+export * from './common/ChatTypes';

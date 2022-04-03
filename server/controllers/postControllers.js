@@ -1,4 +1,4 @@
-const postService = require('../service/postService');
+const postService = require('../service/postServices');
 const PostDto = require('../dtos/postDto');
 
 class PostControllers {

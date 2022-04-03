@@ -5,7 +5,8 @@ import { Routes } from 'routers';
 import { StateTypes } from 'store/types';
 import { checkAuth, needAuth } from 'store/actions';
 import { Loading } from 'common/components';
-import 'App.sass';
+
+import './assets/sass/style.scss';
 
 const App: React.FunctionComponent = () => {
     const dispatch = useDispatch();
